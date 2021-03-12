@@ -1,0 +1,24 @@
+<button mat-raised-button class="example-add-tab-button" (click)="Create()">Add new step</button>
+
+<mat-tab-group mat-align-tabs="start">
+
+  <mat-tab *ngFor="let step of steps">
+
+    <ng-template mat-tab-label>
+      {{step.stepName}}
+      <mat-icon class="example-tab-icon" style="margin-left: 10px;" (click)="Delete(step.id)">
+        remove_circle_outline
+      </mat-icon>
+    </ng-template>
+
+    <button mat-raised-button class="example-add-tab-button" (click)="CreateItem(step)">Add new Item</button>
+
+    <mat-card>
+      <div>
+        <Item *ngFor="let item of step.items" [itemData]="item" (saved)="ItemSaved()"> </Item>
+      </div>
+    </mat-card>
+
+  </mat-tab>
+
+</mat-tab-group>
